@@ -1,11 +1,10 @@
 import math
 
-
 from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from pages.locators import BasePageLocators
+from src.pages.locators import BasePageLocators
 
 
 class BasePage:
@@ -64,5 +63,8 @@ class BasePage:
     def go_to_basket_page(self):
         link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         link.click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user"
 
 
