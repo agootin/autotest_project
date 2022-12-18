@@ -3,6 +3,8 @@ from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
+    PRODUCT_PAGE_URL = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+
     def add_item_to_cart(self):
         self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON).click()
 
@@ -24,4 +26,3 @@ class ProductPage(BasePage):
 
     def should_disappear(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is not disappeared"
-
